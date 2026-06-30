@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "fase": "campione pilota",
-    "data_estrazione": "2026-06-30",
-    "metodologia": "Dichiarazioni estratte da fonti giornalistiche pubbliche, citazioni dirette tra virgolette mantenute fedeli all'originale. Non parafrasate per preservare l'analisi testuale."
+    "fase": "raccolta in corso",
+    "ultimo_aggiornamento": "2026-06-30",
+    "metodologia": "Dichiarazioni estratte da fonti giornalistiche pubbliche, citazioni dirette tra virgolette mantenute fedeli alloriginale. Vedi MILANO2027_SCHEMA.md per la metodologia completa."
   },
   "dichiarazioni": [
     {
@@ -67,7 +67,9 @@
       "tema_primario": "istituzioni",
       "tema_secondario": null,
       "tipo_affermazione": "critica",
-      "menziona": ["centrosinistra_generico"],
+      "menziona": [
+        "centrosinistra_generico"
+      ],
       "tono_menzione": "contro"
     },
     {
@@ -80,7 +82,9 @@
       "tema_primario": "istituzioni",
       "tema_secondario": null,
       "tipo_affermazione": "critica",
-      "menziona": ["civita"],
+      "menziona": [
+        "civita"
+      ],
       "tono_menzione": "neutro_menzione"
     },
     {
@@ -216,6 +220,339 @@
     {
       "id": "dich_majorino_002",
       "candidato_id": "majorino",
+      "testo_originale": "Al di là dei nomi, l'importante adesso è confrontarsi molto sulle idee e sul futuro della città e dell'area metropolitana di Milano.",
+      "data": "2026-05-11",
+      "fonte": "Rinnovo Patente Online - panel Direzione Nord",
+      "fonte_url": "https://rinnovopatenteonline.it/milano-2027-a-direzione-nord-il-confronto-tra-civita-majorino-la-lumia-e-scavuzzo/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_pacini_001",
+      "candidato_id": "pacini",
+      "testo_originale": "Mi candido a sindaco di Milano perché questa città ha bisogno di una rivoluzione. La casa costa troppo, la spesa costa troppo, la vita costa troppo.",
+      "data": "2026-06-30",
+      "fonte": "MilanoToday - annuncio candidatura",
+      "fonte_url": "https://www.milanotoday.it/politica/lorenzo-pacini-candidato-primarie.html",
+      "tema_primario": "abitazioni",
+      "tema_secondario": "economia",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_pacini_002",
+      "candidato_id": "pacini",
+      "testo_originale": "Mi candido per costruire una Milano che possiamo permetterci tutte e tutti. Mai più decisioni prese per i grandi interessi privati o per i fondi stranieri. È il momento di restituire il potere alle persone.",
+      "data": "2026-06-30",
+      "fonte": "MilanoToday - annuncio candidatura",
+      "fonte_url": "https://www.milanotoday.it/politica/lorenzo-pacini-candidato-primarie.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": "economia",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_pacini_003",
+      "candidato_id": "pacini",
+      "testo_originale": "Primarie o barbarie. Le primarie non servono solo a scegliere il candidato dal basso, ma anche ad aprire il dibattito sulla visione di città. I milanesi di sinistra e progressisti si meritano ascolto, risposte e proposte.",
+      "data": "2025-11-17",
+      "fonte": "MilanoToday - intervista",
+      "fonte_url": "https://www.milanotoday.it/politica/intervista_pacini-programma-milano-primarie-comunismo.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_pacini_004",
+      "candidato_id": "pacini",
+      "testo_originale": "Si è interrotto il patto sociale. Si è puntato ad attrarre investimenti stranieri senza garantire al contempo l'accessibilità della città ai lavoratori. Chi governa la città non ha colto la gravità della situazione. E continua a non coglierla ora.",
+      "data": "2025-12-17",
+      "fonte": "Editoriale Domani",
+      "fonte_url": "https://www.editorialedomani.it/politica/italia/pacini-trentenne-candidato-sindaco-milano-pd-sfida-atog4u3e",
+      "tema_primario": "economia",
+      "tema_secondario": "abitazioni",
+      "tipo_affermazione": "critica",
+      "menziona": [
+        "sala_amministrazione"
+      ],
+      "tono_menzione": "contro"
+    },
+    {
+      "id": "dich_pacini_005",
+      "candidato_id": "pacini",
+      "testo_originale": "Mai più salva-Milano, urbanistica rapace, attrattività a discapito dell'equità, mai più mancata partecipazione come su San Siro.",
+      "data": "2026-02-12",
+      "fonte": "Il Foglio",
+      "fonte_url": "https://www.ilfoglio.it/gran-milano/2026/02/12/news/lorenzo-pacini-giovane-dem-a-sinistra-di-tutti-i-dem-idee-toste-non-tutte-da-applausi--127066",
+      "tema_primario": "istituzioni",
+      "tema_secondario": "comunita",
+      "tipo_affermazione": "critica",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_pacini_006",
+      "candidato_id": "pacini",
+      "testo_originale": "Il concetto chiave è affordability. Ci vuole un progetto politico che metta al centro la possibilità dei giovani di vivere qui: costo della vita e delle case, welfare, sostenibilità, qualità dell'aria che respiriamo.",
+      "data": "2025-12-17",
+      "fonte": "Editoriale Domani",
+      "fonte_url": "https://www.editorialedomani.it/politica/italia/pacini-trentenne-candidato-sindaco-milano-pd-sfida-atog4u3e",
+      "tema_primario": "abitazioni",
+      "tema_secondario": "clima",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_tatarella_001",
+      "candidato_id": "tatarella",
+      "testo_originale": "Penso di avere battuto nel 2016 sia Silvia Sardone che Lupi con 5.600 preferenze prese per il Consiglio comunale, ho doppiato Sardone e superato Lupi di migliaia di voti. Se decideranno di fare le primarie parteciperò.",
+      "data": "2026-06-23",
+      "fonte": "Affaritaliani.it",
+      "fonte_url": "https://www.affaritaliani.it/milano/milano-2027-tatarella-scende-in-campo-per-il-centrodestra-lupi-e-sardone-li-ho-gia-battuti.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [
+        "sardone",
+        "lupi"
+      ],
+      "tono_menzione": "contro"
+    },
+    {
+      "id": "dich_tatarella_002",
+      "candidato_id": "tatarella",
+      "testo_originale": "Lupi lo stimo, siamo nati nello stesso quartiere, cioè Baggio. Ritengo che sia il momento per la mia generazione di dare un contributo importante, sono anni che Milano non fa crescere nessuno.",
+      "data": "2026-06-23",
+      "fonte": "Affaritaliani.it",
+      "fonte_url": "https://www.affaritaliani.it/milano/milano-2027-tatarella-scende-in-campo-per-il-centrodestra-lupi-e-sardone-li-ho-gia-battuti.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [
+        "lupi"
+      ],
+      "tono_menzione": "neutro_menzione"
+    },
+    {
+      "id": "dich_tatarella_003",
+      "candidato_id": "tatarella",
+      "testo_originale": "Le persone che oggi vorrebbero dare le carte per amministrare la città sono sempre le stesse, ma è cresciuta una classe dirigente che non è mai stata valorizzata.",
+      "data": "2026-06-23",
+      "fonte": "Affaritaliani.it",
+      "fonte_url": "https://www.affaritaliani.it/milano/milano-2027-tatarella-scende-in-campo-per-il-centrodestra-lupi-e-sardone-li-ho-gia-battuti.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_tatarella_004",
+      "candidato_id": "tatarella",
+      "testo_originale": "Non lasceremo indietro nessuno. Tra le priorità: casa, sicurezza, manutenzione dei quartieri e regole urbanistiche certe.",
+      "data": "2026-06-22",
+      "fonte": "Il Politico Web",
+      "fonte_url": "https://www.ilpoliticoweb.it/comunali-milano-tatarella-sfida-moderati/",
+      "tema_primario": "abitazioni",
+      "tema_secondario": "comunita",
+      "tipo_affermazione": "proposta_concreta",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_tatarella_005",
+      "candidato_id": "tatarella",
+      "testo_originale": "Oggi non ci si può nascondere dietro il soggetto civico, la politica si deve prendere le sue responsabilità.",
+      "data": "2026-06-22",
+      "fonte": "Il Politico Web",
+      "fonte_url": "https://www.ilpoliticoweb.it/comunali-milano-tatarella-sfida-moderati/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [
+        "civita",
+        "lisa"
+      ],
+      "tono_menzione": "contro"
+    },
+    {
+      "id": "dich_tatarella_006",
+      "candidato_id": "tatarella",
+      "testo_originale": "Il mio approccio non è quello di una destra estrema. Non sarò un sindaco che si fa dettare l'agenda dalla Procura.",
+      "data": "2026-06-22",
+      "fonte": "Il Politico Web",
+      "fonte_url": "https://www.ilpoliticoweb.it/comunali-milano-tatarella-sfida-moderati/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_sardone_001",
+      "candidato_id": "sardone",
+      "testo_originale": "Sono onorata. Ma ci vorrebbero le primarie di coalizione. Se le facciamo, e ovviamente il mio partito è d'accordo, io corro. Altrimenti decideranno i leader.",
+      "data": "2026-06-22",
+      "fonte": "Affaritaliani.it",
+      "fonte_url": "https://www.affaritaliani.it/milano/milano-2027-salvini-lancia-sardone-conosce-la-citta-e-la-ama-ma-gli-alleati-restano-freddi.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [
+        "salvini"
+      ],
+      "tono_menzione": "a_favore"
+    },
+    {
+      "id": "dich_sardone_002",
+      "candidato_id": "sardone",
+      "testo_originale": "Milano è la mia città. Oggi sono eurodeputata ma sono anche consigliera comunale: questo dà la cifra di quanto a me interessi lavorare per la mia città.",
+      "data": "2026-06-22",
+      "fonte": "Affaritaliani.it",
+      "fonte_url": "https://www.affaritaliani.it/milano/milano-2027-salvini-lancia-sardone-conosce-la-citta-e-la-ama-ma-gli-alleati-restano-freddi.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_sardone_003",
+      "candidato_id": "sardone",
+      "testo_originale": "Ne sarei onorata, ma al momento è un'ipotesi molto futuribile. Calenda ha detto che con la Lega non correrà e Vannacci ha votato più volte la sfiducia al governo nazionale e quindi immagino che correrà da solo. Io non farei vincere la sinistra, sono loro che si sono esclusi.",
+      "data": "2026-06-22",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/politica/voto-gazebo-lega-candidato-sindaco-milano-silvia-sardone-x4c0tbm1",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [
+        "calenda_azione",
+        "vannacci"
+      ],
+      "tono_menzione": "contro"
+    },
+    {
+      "id": "dich_salvini_001",
+      "candidato_id": "salvini",
+      "testo_originale": "Un candidato sindaco per Milano che mi piacerebbe si chiama Sardone. Conosce Milano e ama Milano.",
+      "data": "2026-06-21",
+      "fonte": "Affaritaliani.it",
+      "fonte_url": "https://www.affaritaliani.it/milano/milano-2027-salvini-lancia-sardone-conosce-la-citta-e-la-ama-ma-gli-alleati-restano-freddi.html",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [
+        "sardone"
+      ],
+      "tono_menzione": "a_favore"
+    },
+    {
+      "id": "dich_salvini_002",
+      "candidato_id": "salvini",
+      "testo_originale": "Avere più di 5 mila persone che hanno scritto Salvini alle primarie è motivo di orgoglio ma io sto facendo il ministro e conto di fare il ministro.",
+      "data": "2026-06-23",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/cronaca/lega-primarie-sindaco-mp8mudip",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_salvini_003",
+      "candidato_id": "salvini",
+      "testo_originale": "Noi facciamo delle proposte. Se qualcuno dice no, faccia delle altre proposte. Io da parte di qualcuno non ho ancora capito chi è il candidato. Noi offriamo una cinquantina di candidati.",
+      "data": "2026-06-22",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/politica/voto-gazebo-lega-candidato-sindaco-milano-silvia-sardone-x4c0tbm1",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_salvini_004",
+      "candidato_id": "salvini",
+      "testo_originale": "Il suo nome non è mai venuto fuori dalle nostre primarie...",
+      "data": "2026-06-22",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/politica/voto-gazebo-lega-candidato-sindaco-milano-silvia-sardone-x4c0tbm1",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [
+        "lupi"
+      ],
+      "tono_menzione": "contro"
+    },
+    {
+      "id": "dich_salvini_005",
+      "candidato_id": "salvini",
+      "testo_originale": "I 10mila milanesi che hanno votato ci hanno parlato di sicurezza, di vigili, di costo della vita e dell'emergenza casa e di viabilità, tra ztl e mezzi insufficienti, una bella idea di città.",
+      "data": "2026-06-23",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/cronaca/lega-primarie-sindaco-mp8mudip",
+      "tema_primario": "comunita",
+      "tema_secondario": "abitazioni",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_civita_007",
+      "candidato_id": "civita",
+      "testo_originale": "Vedo molto interesse attorno all'idea che un candidato civico possa fare sintesi. I tempi non devono diventare troppo maturi. Prima si parte meglio è, perché c'è un gap importante da recuperare.",
+      "data": "2026-05-11",
+      "fonte": "Nicola Porro - panel Direzione Nord",
+      "fonte_url": "https://www.nicolaporro.it/milanoquotidiano/direzione-nord/milano-2027-il-confronto-tra-civita-majorino-scavuzzo-e-la-lumia-chiude-direzione-nord/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_civita_008",
+      "candidato_id": "civita",
+      "testo_originale": "Penso che Lupi sia un ottimo candidato. Ma mi sembra che una proposta politica pura abbia meno possibilità rispetto a una candidatura più civica.",
+      "data": "2026-05-11",
+      "fonte": "Nicola Porro - panel Direzione Nord",
+      "fonte_url": "https://www.nicolaporro.it/milanoquotidiano/direzione-nord/milano-2027-il-confronto-tra-civita-majorino-scavuzzo-e-la-lumia-chiude-direzione-nord/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [
+        "lupi"
+      ],
+      "tono_menzione": "a_favore"
+    },
+    {
+      "id": "dich_lalumia_003",
+      "candidato_id": "la_lumia",
+      "testo_originale": "A Milano serve equilibrio, la regola è la principale chiave di volta della libertà e della convivenza civile.",
+      "data": "2026-05-11",
+      "fonte": "Nicola Porro - panel Direzione Nord",
+      "fonte_url": "https://www.nicolaporro.it/milanoquotidiano/direzione-nord/milano-2027-il-confronto-tra-civita-majorino-scavuzzo-e-la-lumia-chiude-direzione-nord/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null
+    },
+    {
+      "id": "dich_scavuzzo_001",
+      "candidato_id": "scavuzzo",
       "testo_originale": "Al di là dei nomi, l'importante adesso è confrontarsi molto sulle idee e sul futuro della città e dell'area metropolitana di Milano.",
       "data": "2026-05-11",
       "fonte": "Rinnovo Patente Online - panel Direzione Nord",

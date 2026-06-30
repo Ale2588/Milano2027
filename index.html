@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Milano 2027 — Mappa del Dibattito</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:       #0a0c12;
+  --ink2:      #11141e;
+  --ink3:      #181c2a;
+  --wire:      #1f2538;
+  --wire2:     #2a3050;
+  --muted:     #5c6480;
+  --body:      #8d96b0;
+  --text:      #cdd5e8;
+  --bright:    #eef2ff;
+  --signal:    #4f8ef7;
+  --gold:      #f59e0b;
+  --green:     #10b981;
+  --red:       #ef4444;
+  --grey:      #6c757d;
+  --mono:      'JetBrains Mono','Fira Code','Courier New',monospace;
+  --sans:      'Inter','Helvetica Neue',system-ui,sans-serif;
+}
+
+html,body{width:100%;height:100%;background:var(--ink);color:var(--text);font-family:var(--sans);font-size:13px;overflow:hidden}
+
+#shell{display:grid;grid-template-rows:44px 1fr;grid-template-columns:1fr 360px;height:100vh}
+
+#topbar{
+  grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:0 16px;
+  background:var(--ink2);border-bottom:1px solid var(--wire);z-index:20;
+}
+#topbar .wordmark{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--signal);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+#topbar .pipe{color:var(--wire2)}
+#topbar .meta{font-family:var(--mono);font-size:10px;color:var(--muted)}
+#topbar .spacer{flex:1}
+.ctrl-group{display:flex;align-items:center;gap:6px}
+.label-tag{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+select{background:var(--ink3);border:1px solid var(--wire);border-radius:5px;color:var(--text);font-size:11px;padding:3px 8px;outline:none;cursor:pointer;font-family:var(--mono)}
+select:hover{border-color:var(--signal)}
+.btn{font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--ink3);border:1px solid var(--wire);border-radius:5px;color:var(--body);cursor:pointer}
+.btn:hover{border-color:var(--signal);color:var(--signal)}
+.btn.active{border-color:var(--signal);color:var(--signal);background:#4f8ef710}
+
+#canvas-wrap{position:relative;overflow:hidden;background:var(--ink)}
+svg#graph{width:100%;height:100%}
+
+.g-node{cursor:pointer}
+.g-node circle.base{stroke-width:1.5;stroke:rgba(255,255,255,.15);transition:stroke-width .15s}
+.g-node.selected circle.base{stroke:white;stroke-width:3}
+.g-node.faded{opacity:.12}
+.g-node text{font-family:var(--mono);font-size:10px;fill:var(--text);pointer-events:none;text-anchor:middle}
+.g-node text.sub{font-size:8px;fill:var(--muted)}
+
+.g-link{transition:stroke-opacity .2s}
+.g-link.faded{stroke-opacity:.04}
+.g-link.lit{stroke-opacity:1}
+
+#tip{
+  position:absolute;display:none;background:var(--ink2);border:1px solid var(--wire2);
+  border-radius:8px;padding:10px 13px;font-size:11px;pointer-events:none;max-width:230px;z-index:50;line-height:1.5;
+}
+#tip .t-name{font-weight:700;color:var(--bright);margin-bottom:2px}
+#tip .t-coal{font-family:var(--mono);font-size:10px;margin-bottom:6px}
+#tip .t-row{display:flex;justify-content:space-between;gap:10px;color:var(--muted)}
+#tip .t-val{font-family:var(--mono);color:var(--text)}
+
+#panel{background:var(--ink2);border-left:1px solid var(--wire);overflow-y:auto;display:flex;flex-direction:column}
+#panel::-webkit-scrollbar{width:3px}
+#panel::-webkit-scrollbar-thumb{background:var(--wire2);border-radius:2px}
+
+.p-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-family:var(--mono);font-size:11px;gap:10px;padding:30px;text-align:center}
+.p-empty .ico{font-size:32px;opacity:.2}
+
+.p-head{padding:14px 16px 10px;border-bottom:1px solid var(--wire);position:sticky;top:0;background:var(--ink2);z-index:5}
+.p-name{font-size:15px;font-weight:700;color:var(--bright);margin-bottom:5px}
+.p-chip{display:inline-block;font-family:var(--mono);font-size:9px;padding:2px 8px;border-radius:4px}
+.p-sub{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:4px}
+.p-status{display:inline-block;font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:4px;margin-top:6px;background:var(--ink3);border:1px solid var(--wire);color:var(--body)}
+
+.theme-bars{padding:12px 16px;border-bottom:1px solid var(--wire)}
+.theme-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.theme-label{font-family:var(--mono);font-size:9px;color:var(--muted);width:70px;flex-shrink:0;text-transform:uppercase}
+.theme-track{flex:1;height:5px;background:var(--wire);border-radius:3px;overflow:hidden}
+.theme-fill{height:100%;background:var(--signal);border-radius:3px}
+.theme-pct{font-family:var(--mono);font-size:9px;color:var(--muted);width:28px;text-align:right}
+
+.p-section-title{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:10px 16px 6px;border-bottom:1px solid var(--wire)}
+
+.decl-item{padding:10px 16px;border-bottom:1px solid var(--wire)}
+.decl-tags{display:flex;gap:5px;margin-bottom:5px;flex-wrap:wrap}
+.decl-tag{font-family:var(--mono);font-size:8px;padding:1px 6px;border-radius:3px;text-transform:uppercase}
+.tag-tema{background:#4f8ef715;border:1px solid #4f8ef730;color:var(--signal)}
+.tag-tipo-proposta{background:#10b98115;border:1px solid #10b98130;color:var(--green)}
+.tag-tipo-principio{background:#8d96b015;border:1px solid #8d96b030;color:var(--body)}
+.tag-tipo-critica{background:#ef444415;border:1px solid #ef444430;color:var(--red)}
+.decl-text{font-size:12px;color:var(--text);line-height:1.5;font-style:italic}
+.decl-meta{margin-top:6px;font-family:var(--mono);font-size:9px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+.decl-meta a{color:var(--signal);text-decoration:none}
+
+.conn-item{display:flex;align-items:center;gap:9px;padding:7px 16px;border-bottom:1px solid var(--wire);cursor:pointer}
+.conn-item:hover{background:var(--ink3)}
+.conn-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.conn-info{flex:1;min-width:0}
+.conn-name{font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conn-meta{font-family:var(--mono);font-size:9px;color:var(--muted)}
+.conn-tone{font-family:var(--mono);font-size:9px;padding:1px 6px;border-radius:3px}
+.tone-contro{background:#ef444415;border:1px solid #ef444430;color:var(--red)}
+.tone-a_favore{background:#10b98115;border:1px solid #10b98130;color:var(--green)}
+.tone-neutro_menzione{background:#8d96b015;border:1px solid #8d96b030;color:var(--body)}
+
+#legend{position:absolute;bottom:14px;left:14px;background:var(--ink2);border:1px solid var(--wire);border-radius:8px;padding:10px 13px;font-family:var(--mono);font-size:9px;z-index:10;max-width:200px}
+.leg-title{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.leg-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;color:var(--body)}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.leg-line{width:14px;height:2px;flex-shrink:0}
+
+#insights{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--ink2);border:1px solid var(--wire2);border-radius:20px;padding:6px 16px;font-family:var(--mono);font-size:10px;color:var(--muted);pointer-events:none;white-space:nowrap;z-index:10;text-align:center}
+
+#methodology-link{position:absolute;top:10px;right:14px;font-family:var(--mono);font-size:9px;color:var(--muted);text-decoration:none;border:1px solid var(--wire);padding:4px 10px;border-radius:5px;background:var(--ink2);z-index:10}
+#methodology-link:hover{color:var(--signal);border-color:var(--signal)}
+
+@media(max-width:768px){
+  #shell{grid-template-columns:1fr;grid-template-rows:44px 1fr auto}
+  #panel{grid-row:3;max-height:42vh;border-left:none;border-top:1px solid var(--wire)}
+  #legend{display:none}
+}
+</style>
+</head>
+<body>
+<div id="shell">
+
+<header id="topbar">
+  <span class="wordmark">Milano 2027</span>
+  <span class="pipe">|</span>
+  <span class="meta" id="meta-txt">Mappa del dibattito elettorale</span>
+  <div class="spacer"></div>
+
+  <div class="ctrl-group">
+    <span class="label-tag">Coalizione</span>
+    <select id="sel-coal"><option value="all">Tutte</option></select>
+  </div>
+
+  <button class="btn" id="btn-reset">Reset</button>
+</header>
+
+<div id="canvas-wrap">
+  <svg id="graph"></svg>
+  <div id="tip"></div>
+  <div id="insights"></div>
+  <a id="methodology-link" href="MILANO2027_SCHEMA.md" target="_blank">📋 Metodologia</a>
+  <div id="legend">
+    <div class="leg-title">Coalizione</div>
+    <div class="leg-row"><div class="leg-dot" style="background:#e63946"></div><span>Centrosinistra</span></div>
+    <div class="leg-row"><div class="leg-dot" style="background:#1a6bb5"></div><span>Centrodestra</span></div>
+    <div class="leg-row"><div class="leg-dot" style="background:#a78bfa"></div><span>Trasversale</span></div>
+    <div class="leg-row"><div class="leg-dot" style="background:#10b981"></div><span>Outsider</span></div>
+    <div style="margin-top:8px;border-top:1px solid var(--wire);padding-top:8px">
+      <div class="leg-title">Archi confronto</div>
+      <div class="leg-row"><div class="leg-line" style="background:#ef4444"></div><span>contro</span></div>
+      <div class="leg-row"><div class="leg-line" style="background:#10b981"></div><span>a favore</span></div>
+      <div class="leg-row"><div class="leg-line" style="background:#6c757d"></div><span>menzione</span></div>
+    </div>
+  </div>
+</div>
+
+<aside id="panel">
+  <div class="p-empty"><div class="ico">🗳️</div><div>Clicca su un candidato<br>per vedere posizioni e dichiarazioni</div></div>
+</aside>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+const TEMI = ['mobilita','verde','abitazioni','cultura','economia','comunita','clima','istituzioni'];
+const TEMI_LABEL = {mobilita:'Mobilità',verde:'Verde',abitazioni:'Abitazioni',cultura:'Cultura',economia:'Economia',comunita:'Comunità',clima:'Clima',istituzioni:'Istituzioni'};
+
+const COAL_COLOR = {
+  'Centrosinistra':'#e63946',
+  'Centrodestra':'#1a6bb5',
+  'Trasversale':'#a78bfa',
+  'Outsider':'#10b981'
+};
+
+const STATUS_LABEL = {
+  dichiarato:'Dichiarato', disponibile_forte:'Disponibile (forte)', disponibile:'Disponibile',
+  ipotesi:'Ipotesi', ipotesi_debole:'Ipotesi debole', ritirato:'Ritirato'
+};
+
+let CAND=null, DECL=null, sim=null, selId=null, filterCoal='all';
+
+// ══════════════════════════════════════════════════════════════
+async function load(){
+  try{
+    const [r1,r2] = await Promise.all([fetch('candidati.json'), fetch('dichiarazioni.json')]);
+    CAND = (await r1.json()).candidati;
+    DECL = (await r2.json()).dichiarazioni;
+  }catch(e){
+    console.warn('Fetch failed, using mock', e);
+    const m = mockData(); CAND=m.cand; DECL=m.decl;
+  }
+  computeVectors();
+  init();
+}
+
+function computeVectors(){
+  const byCand = {};
+  DECL.forEach(d=>{
+    if(!byCand[d.candidato_id]) byCand[d.candidato_id]=[];
+    byCand[d.candidato_id].push(d);
+  });
+
+  CAND.forEach(c=>{
+    const decls = byCand[c.id]||[];
+    const counts = {}; TEMI.forEach(t=>counts[t]=0);
+    decls.forEach(d=>{
+      if(d.tema_primario) counts[d.tema_primario]+=1;
+      if(d.tema_secondario) counts[d.tema_secondario]+=0.5;
+    });
+    const total = Object.values(counts).reduce((a,b)=>a+b,0);
+    c.vettore_temi = {};
+    TEMI.forEach(t=> c.vettore_temi[t] = total>0 ? counts[t]/total : 0);
+    c.n_dichiarazioni = decls.length;
+    c.tema_dominante = total>0 ? Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0] : null;
+  });
+}
+
+function cosineSim(va,vb){
+  let dot=0,na=0,nb=0;
+  TEMI.forEach(t=>{ dot+=va[t]*vb[t]; na+=va[t]*va[t]; nb+=vb[t]*vb[t]; });
+  if(na===0||nb===0) return 0;
+  return dot/(Math.sqrt(na)*Math.sqrt(nb));
+}
+
+// ══════════════════════════════════════════════════════════════
+function init(){
+  document.getElementById('meta-txt').textContent =
+    `${CAND.length} nomi monitorati · ${DECL.length} dichiarazioni raccolte`;
+
+  const coals = [...new Set(CAND.map(c=>c.coalizione))];
+  const sel = document.getElementById('sel-coal');
+  coals.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
+
+  sel.addEventListener('change', e=>{ filterCoal=e.target.value; render(); });
+  document.getElementById('btn-reset').addEventListener('click', ()=>{
+    selId=null; filterCoal='all'; sel.value='all'; render(); emptyPanel();
+  });
+
+  render();
+}
+
+// ══════════════════════════════════════════════════════════════
+function render(){
+  const svg = d3.select('#graph');
+  svg.selectAll('*').remove();
+  if(sim){ sim.stop(); sim=null; }
+
+  const wrap = document.getElementById('canvas-wrap');
+  const W = wrap.clientWidth, H = wrap.clientHeight;
+
+  const visCand = filterCoal==='all' ? CAND : CAND.filter(c=>c.coalizione===filterCoal);
+  const visIds = new Set(visCand.map(c=>c.id));
+
+  // Asse A: vicinanza ideologica (forza link, invisibile)
+  const idealLinks = [];
+  for(let i=0;i<visCand.length;i++){
+    for(let j=i+1;j<visCand.length;j++){
+      const a=visCand[i], b=visCand[j];
+      if(a.n_dichiarazioni===0 || b.n_dichiarazioni===0) continue;
+      const sim_score = cosineSim(a.vettore_temi, b.vettore_temi);
+      if(sim_score>0.15){
+        idealLinks.push({source:a.id, target:b.id, type:'ideologica', sim:sim_score});
+      }
+    }
+  }
+
+  // Asse B: confronto esplicito (arco visibile)
+  const confrontoMap = {};
+  DECL.forEach(d=>{
+    if(!d.menziona || d.menziona.length===0) return;
+    d.menziona.forEach(targetId=>{
+      if(targetId==='centrosinistra_generico'||targetId==='centrodestra_generico') return;
+      if(!visIds.has(d.candidato_id) || !visIds.has(targetId)) return;
+      const key = [d.candidato_id,targetId].sort().join('|||');
+      if(!confrontoMap[key]) confrontoMap[key]={source:d.candidato_id,target:targetId,n:0,toni:{}};
+      confrontoMap[key].n++;
+      confrontoMap[key].toni[d.tono_menzione] = (confrontoMap[key].toni[d.tono_menzione]||0)+1;
+    });
+  });
+  const confrontoLinks = Object.values(confrontoMap).map(l=>{
+    const toneEntries = Object.entries(l.toni).sort((a,b)=>b[1]-a[1]);
+    return {...l, type:'confronto', tono_prevalente: toneEntries[0][0]};
+  });
+
+  const g = svg.append('g');
+  svg.call(d3.zoom().scaleExtent([.3,4]).on('zoom',e=>g.attr('transform',e.transform)));
+
+  // Ideological links: thin, faint
+  const idealSel = g.append('g').selectAll('line')
+    .data(idealLinks).join('line')
+    .attr('class','g-link')
+    .style('stroke','#4f8ef7')
+    .style('stroke-width', l=>0.5+l.sim*2)
+    .style('stroke-opacity', l=>0.08+l.sim*0.15)
+    .style('stroke-dasharray','2,3');
+
+  const toneColor = {contro:'#ef4444', a_favore:'#10b981', neutro_menzione:'#6c757d'};
+
+  // Confronto links: visible, weighted
+  const confSel = g.append('g').selectAll('line')
+    .data(confrontoLinks).join('line')
+    .attr('class','g-link')
+    .style('stroke', l=>toneColor[l.tono_prevalente]||'#6c757d')
+    .style('stroke-width', l=>1.5+l.n*1.5)
+    .style('stroke-opacity', .65);
+
+  const maxDecl = Math.max(...visCand.map(c=>c.n_dichiarazioni),1);
+  const rScale = c=>8+14*(c.n_dichiarazioni/maxDecl);
+
+  const nodeSel = g.append('g').selectAll('g')
+    .data(visCand).join('g')
+    .attr('class','g-node')
+    .call(d3.drag()
+      .on('start',(e,d)=>{ if(!e.active) sim.alphaTarget(.3).restart(); d.fx=d.x; d.fy=d.y; })
+      .on('drag',(e,d)=>{ d.fx=e.x; d.fy=e.y; })
+      .on('end',(e,d)=>{ if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
+    )
+    .on('click',(e,d)=>{ e.stopPropagation(); onNodeClick(d,nodeSel,idealSel,confSel); })
+    .on('mouseover',(e,d)=>showTip(e,d))
+    .on('mousemove',moveTip)
+    .on('mouseout',hideTip);
+
+  nodeSel.append('circle')
+    .attr('class','base')
+    .attr('r', rScale)
+    .attr('fill', d=>COAL_COLOR[d.coalizione]||'#6c757d')
+    .attr('fill-opacity', d=>d.n_dichiarazioni>0 ? 0.9 : 0.25);
+
+  nodeSel.filter(d=>d.n_dichiarazioni>0)
+    .append('text')
+    .attr('dy', d=>-(rScale(d)+5))
+    .text(d=>d.nome.split(' ').pop());
+
+  sim = d3.forceSimulation(visCand)
+    .force('link', d3.forceLink([...idealLinks,...confrontoLinks]).id(d=>d.id)
+      .distance(l=> l.type==='ideologica' ? 220-(l.sim*150) : 90-(l.n*5))
+      .strength(l=> l.type==='ideologica' ? l.sim*0.6 : 0.3))
+    .force('charge', d3.forceManyBody().strength(-220))
+    .force('center', d3.forceCenter(W/2,H/2))
+    .force('collision', d3.forceCollide().radius(d=>rScale(d)+10))
+    .on('tick',()=>{
+      idealSel.attr('x1',l=>l.source.x).attr('y1',l=>l.source.y).attr('x2',l=>l.target.x).attr('y2',l=>l.target.y);
+      confSel.attr('x1',l=>l.source.x).attr('y1',l=>l.source.y).attr('x2',l=>l.target.x).attr('y2',l=>l.target.y);
+      nodeSel.attr('transform',d=>`translate(${d.x},${d.y})`);
+    });
+
+  const withData = visCand.filter(c=>c.n_dichiarazioni>0).length;
+  document.getElementById('insights').innerHTML =
+    `${withData}/${visCand.length} con dichiarazioni raccolte · ${confrontoLinks.length} confronti diretti · linee tratteggiate = vicinanza ideologica`;
+}
+
+// ══════════════════════════════════════════════════════════════
+function onNodeClick(d,nodeSel,idealSel,confSel){
+  selId = d.id;
+  const connIds = new Set([d.id]);
+  [...idealSel.data(),...confSel.data()].forEach(l=>{
+    const s=l.source.id||l.source, t=l.target.id||l.target;
+    if(s===d.id) connIds.add(t);
+    if(t===d.id) connIds.add(s);
+  });
+  nodeSel.classed('selected', n=>n.id===d.id);
+  nodeSel.classed('faded', n=>!connIds.has(n.id));
+  [idealSel,confSel].forEach(sel=>{
+    sel.classed('lit', l=>{ const s=l.source.id||l.source,t=l.target.id||l.target; return s===d.id||t===d.id; });
+    sel.classed('faded', l=>{ const s=l.source.id||l.source,t=l.target.id||l.target; return s!==d.id&&t!==d.id; });
+  });
+  showPanel(d);
+}
+
+// ══════════════════════════════════════════════════════════════
+function showPanel(d){
+  const myDecls = DECL.filter(x=>x.candidato_id===d.id).sort((a,b)=>new Date(b.data)-new Date(a.data));
+
+  const confronti = [];
+  DECL.forEach(x=>{
+    if(x.candidato_id===d.id && x.menziona?.length){
+      x.menziona.forEach(t=>{
+        if(t!=='centrosinistra_generico'&&t!=='centrodestra_generico'){
+          const other = CAND.find(c=>c.id===t);
+          if(other) confronti.push({other, tono:x.tono_menzione, decl:x});
+        }
+      });
+    }
+    if(x.candidato_id!==d.id && x.menziona?.includes(d.id)){
+      const other = CAND.find(c=>c.id===x.candidato_id);
+      if(other) confronti.push({other, tono:x.tono_menzione, decl:x, ricevuta:true});
+    }
+  });
+
+  let html = `
+    <div class="p-head">
+      <div class="p-name">${d.nome}</div>
+      <span class="p-chip" style="background:${COAL_COLOR[d.coalizione]}20;color:${COAL_COLOR[d.coalizione]};border:1px solid ${COAL_COLOR[d.coalizione]}40">${d.coalizione}</span>
+      <div class="p-sub">${d.ruolo_attuale||''}</div>
+      <div class="p-status">${STATUS_LABEL[d.status]||d.status}</div>
+    </div>`;
+
+  if(d.n_dichiarazioni>0){
+    html += `<div class="theme-bars">`;
+    TEMI.forEach(t=>{
+      const pct = Math.round((d.vettore_temi[t]||0)*100);
+      if(pct>0){
+        html += `
+          <div class="theme-row">
+            <div class="theme-label">${TEMI_LABEL[t]}</div>
+            <div class="theme-track"><div class="theme-fill" style="width:${pct}%"></div></div>
+            <div class="theme-pct">${pct}%</div>
+          </div>`;
+      }
+    });
+    html += `</div>`;
+  } else {
+    html += `<div style="padding:14px 16px;color:var(--muted);font-size:11px;font-family:var(--mono)">Nessuna dichiarazione ancora raccolta per questo nome.</div>`;
+  }
+
+  if(confronti.length>0){
+    html += `<div class="p-section-title">Confronti diretti (${confronti.length})</div>`;
+    confronti.forEach(({other,tono,decl,ricevuta})=>{
+      html += `
+        <div class="conn-item" onclick='clickCand("${other.id}")'>
+          <div class="conn-dot" style="background:${COAL_COLOR[other.coalizione]}"></div>
+          <div class="conn-info">
+            <div class="conn-name">${ricevuta?'← ':'→ '}${other.nome}</div>
+            <div class="conn-meta">${other.coalizione}</div>
+          </div>
+          <div class="conn-tone tone-${tono}">${tono?.replace('_',' ')||''}</div>
+        </div>`;
+    });
+  }
+
+  if(myDecls.length>0){
+    html += `<div class="p-section-title">Dichiarazioni (${myDecls.length})</div>`;
+    myDecls.forEach(x=>{
+      const tipoClass = 'tag-tipo-'+(x.tipo_affermazione==='proposta_concreta'?'proposta':x.tipo_affermazione==='critica'?'critica':'principio');
+      html += `
+        <div class="decl-item">
+          <div class="decl-tags">
+            <span class="decl-tag tag-tema">${TEMI_LABEL[x.tema_primario]||x.tema_primario}</span>
+            ${x.tema_secondario?`<span class="decl-tag tag-tema">${TEMI_LABEL[x.tema_secondario]}</span>`:''}
+            <span class="decl-tag ${tipoClass}">${x.tipo_affermazione.replace('_',' ')}</span>
+          </div>
+          <div class="decl-text">"${x.testo_originale}"</div>
+          <div class="decl-meta">
+            <span>${x.data}</span><span>·</span><span>${x.fonte}</span>
+            ${x.fonte_url?`<a href="${x.fonte_url}" target="_blank">↗ fonte</a>`:''}
+          </div>
+        </div>`;
+    });
+  }
+
+  document.getElementById('panel').innerHTML = html;
+}
+
+function clickCand(id){ const c=CAND.find(x=>x.id===id); if(c) showPanel(c); }
+function emptyPanel(){
+  document.getElementById('panel').innerHTML =
+    `<div class="p-empty"><div class="ico">🗳️</div><div>Clicca su un candidato<br>per vedere posizioni e dichiarazioni</div></div>`;
+}
+
+// ══════════════════════════════════════════════════════════════
+function showTip(e,d){
+  const t=document.getElementById('tip');
+  t.innerHTML = `
+    <div class="t-name">${d.nome}</div>
+    <div class="t-coal" style="color:${COAL_COLOR[d.coalizione]}">${d.coalizione}</div>
+    <div class="t-row"><span>status</span><span class="t-val">${STATUS_LABEL[d.status]||d.status}</span></div>
+    <div class="t-row"><span>dichiarazioni</span><span class="t-val">${d.n_dichiarazioni}</span></div>
+    ${d.tema_dominante?`<div class="t-row"><span>tema principale</span><span class="t-val">${TEMI_LABEL[d.tema_dominante]}</span></div>`:''}
+  `;
+  t.style.display='block'; moveTip(e);
+}
+function moveTip(e){
+  const t=document.getElementById('tip');
+  const c=document.getElementById('canvas-wrap').getBoundingClientRect();
+  let x=e.clientX-c.left+14, y=e.clientY-c.top+14;
+  if(x+240>c.width) x-=260; if(y+150>c.height) y-=160;
+  t.style.left=x+'px'; t.style.top=y+'px';
+}
+function hideTip(){ document.getElementById('tip').style.display='none'; }
+
+// ══════════════════════════════════════════════════════════════
+function mockData(){
+  return {cand:[
+    {id:'a',nome:'Candidato Demo A',coalizione:'Centrosinistra',ruolo_attuale:'',status:'dichiarato'},
+    {id:'b',nome:'Candidato Demo B',coalizione:'Centrodestra',ruolo_attuale:'',status:'dichiarato'},
+  ], decl:[]};
+}
+
+load();
+</script>
+</body>
+</html>

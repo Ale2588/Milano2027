@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "source": "Affaritaliani.it - Federico Ughi, 26 giugno 2026",
+    "source_url": "https://www.affaritaliani.it/milano/milano-2027-tutti-i-nomi-associati-alla-poltrona-da-sindaco-ne-abbiamo-contati-43-per-ora.html",
+    "data_raccolta": "2026-06-30",
+    "note": "Elenco preliminare, in evoluzione. Tutti i 43 nomi restano monitorati; nessuno viene escluso a priori. Un candidato esce dal tracking solo quando si ufficializza un ritiro esplicito, oppure l'assenza di dichiarazioni pubbliche per un periodo prolungato lo rende evidente direttamente dal grafo (nodo isolato, senza attività).",
+    "totale": 43
+  },
+  "candidati": [
+    {"id":"majorino","nome":"Pierfrancesco Majorino","coalizione":"Centrosinistra","ruolo_attuale":"Capogruppo PD in Consiglio regionale, ex candidato presidente Lombardia","status":"disponibile_forte","note":"Sostenitore primarie, radicato nella sinistra milanese"},
+    {"id":"scavuzzo","nome":"Anna Scavuzzo","coalizione":"Centrosinistra","ruolo_attuale":"Vicesindaca di Milano","status":"disponibile","note":"Candidatura nel segno della continuità con Sala"},
+    {"id":"conte_emmanuel","nome":"Emmanuel Conte","coalizione":"Centrosinistra","ruolo_attuale":"Assessore Bilancio, Demanio e Piano Casa","status":"disponibile","note":"Profilo riformista, area centrista della coalizione"},
+    {"id":"goisis","nome":"Tommaso Goisis","coalizione":"Centrosinistra","ruolo_attuale":"Esponente civismo ambientalista","status":"disponibile","note":""},
+    {"id":"pacini","nome":"Lorenzo Pacini","coalizione":"Centrosinistra","ruolo_attuale":"Assessore Municipio 1","status":"disponibile_forte","note":"Sostenitore primarie, posizioni nettamente a sinistra, molto attivo sui social"},
+    {"id":"calabresi","nome":"Mario Calabresi","coalizione":"Centrosinistra","ruolo_attuale":"Ex direttore di Repubblica","status":"ipotesi","note":"Possibile candidato unitario, mai esposto apertamente"},
+    {"id":"sciuto","nome":"Donatella Sciuto","coalizione":"Centrosinistra","ruolo_attuale":"Rettrice del Politecnico di Milano","status":"ipotesi","note":"Possibile candidata trasversale, nessuna disponibilità esplicita"},
+    {"id":"ambrosoli","nome":"Umberto Ambrosoli","coalizione":"Centrosinistra","ruolo_attuale":"Avvocato","status":"ipotesi","note":""},
+    {"id":"cossutta","nome":"Carlotta Cossutta","coalizione":"Centrosinistra","ruolo_attuale":"Ricercatrice universitaria","status":"ipotesi","note":""},
+    {"id":"cucchiara","nome":"Francesca Cucchiara","coalizione":"Centrosinistra","ruolo_attuale":"Consigliera comunale","status":"ipotesi","note":"Area sinistra oltre il PD"},
+    {"id":"barbacetto","nome":"Gianni Barbacetto","coalizione":"Centrosinistra","ruolo_attuale":"Giornalista","status":"ipotesi","note":"Area sinistra oltre il PD"},
+    {"id":"dini","nome":"Veronica Dini","coalizione":"Centrosinistra","ruolo_attuale":"Avvocata","status":"ipotesi","note":"Battaglie amministrative e urbanistiche, area sinistra oltre il PD"},
+    {"id":"de_bortoli","nome":"Ferruccio de Bortoli","coalizione":"Centrosinistra","ruolo_attuale":"Ex direttore Corriere della Sera","status":"ipotesi","note":"Periodicamente indicato da anni"},
+    {"id":"cottarelli","nome":"Carlo Cottarelli","coalizione":"Trasversale","ruolo_attuale":"Economista, senatore PD (2022)","status":"ipotesi","note":"Indicato anche da settori di Forza Italia, sospeso tra i due schieramenti"},
+    {"id":"marsilio","nome":"Marta Marsilio","coalizione":"Centrodestra","ruolo_attuale":"Professoressa Besta","status":"ritirato","note":"Ha smentito l'ipotesi"},
+
+    {"id":"lupi","nome":"Maurizio Lupi","coalizione":"Centrodestra","ruolo_attuale":"Leader Noi Moderati, ex assessore Urbanistica Milano, ex ministro","status":"disponibile_forte","note":"Primo nome con investitura politica, proposto da La Russa"},
+    {"id":"perego","nome":"Matteo Perego di Cremnago","coalizione":"Centrodestra","ruolo_attuale":"Sottosegretario alla Difesa (FdI)","status":"ipotesi","note":"Gradito a Crosetto, potenzialmente a Meloni e famiglia Berlusconi"},
+    {"id":"albertini","nome":"Gabriele Albertini","coalizione":"Centrodestra","ruolo_attuale":"Ex sindaco di Milano","status":"ipotesi_debole","note":"Nessun segnale concreto di ritorno"},
+    {"id":"sardone","nome":"Silvia Sardone","coalizione":"Centrodestra","ruolo_attuale":"Europarlamentare, vicesegretaria Lega","status":"disponibile_forte","note":"Forte consenso tra militanti dai gazebo Lega"},
+    {"id":"morelli","nome":"Alessandro Morelli","coalizione":"Centrodestra","ruolo_attuale":"Sottosegretario (Lega)","status":"ipotesi","note":""},
+    {"id":"salvini","nome":"Matteo Salvini","coalizione":"Centrodestra","ruolo_attuale":"Segretario Lega, Vicepremier","status":"ipotesi_debole","note":"Mai trasformato la suggestione in progetto concreto"},
+    {"id":"spada","nome":"Alessandro Spada","coalizione":"Centrodestra","ruolo_attuale":"Imprenditore, ex presidente Assolombarda","status":"ipotesi","note":"Possibile candidatura civica mondo produttivo, non dichiarata"},
+    {"id":"parodi","nome":"Roberto Parodi","coalizione":"Centrodestra","ruolo_attuale":"Scrittore, personaggio social","status":"ipotesi","note":"Critico Area B/Area C, associato anche a lista Vannacci"},
+    {"id":"bozzetti","nome":"Giovanni Bozzetti","coalizione":"Centrodestra","ruolo_attuale":"Presidente Fondazione Fiera Milano, ex assessore","status":"ipotesi","note":"Vicino a La Russa, non intenzionato a lasciare incarico attuale"},
+    {"id":"dallocchio","nome":"Maurizio Dallocchio","coalizione":"Centrodestra","ruolo_attuale":"Docente Bocconi, esperto finanza","status":"ipotesi","note":""},
+    {"id":"veronesi","nome":"Paolo Veronesi","coalizione":"Centrodestra","ruolo_attuale":"Chirurgo, direttore Senologia IEO","status":"ipotesi","note":"Già considerato nel 2021"},
+    {"id":"ligresti","nome":"Giulia Ligresti","coalizione":"Centrodestra","ruolo_attuale":"Imprenditrice e designer","status":"ipotesi","note":""},
+    {"id":"borsellino","nome":"Filippo Borsellino","coalizione":"Centrodestra","ruolo_attuale":"Portavoce comitato Famiglie sospese","status":"ipotesi","note":"Attivo nelle proteste su inchieste urbanistica milanese"},
+    {"id":"de_albertis","nome":"Regina De Albertis","coalizione":"Centrodestra","ruolo_attuale":"Ex presidente Assimpredil Ance","status":"ipotesi_debole","note":"Profilo più defilato rispetto ai mesi scorsi"},
+    {"id":"la_lumia","nome":"Antonino (Nino) La Lumia","coalizione":"Centrodestra","ruolo_attuale":"Presidente Ordine Avvocati Milano","status":"disponibile","note":"Fondatore associazione Dialoga, rapporti con FI e Lega"},
+    {"id":"civita","nome":"Antonio Civita","coalizione":"Centrodestra","ruolo_attuale":"Imprenditore, fondatore Panino Giusto","status":"disponibile_forte","note":"Progetto civico Tu Milano, apprezzato area moderata/cattolica, nessuna investitura formale"},
+    {"id":"tatarella","nome":"Pietro Tatarella","coalizione":"Centrodestra","ruolo_attuale":"Ex consigliere comunale FI","status":"disponibile_forte","note":"Ha annunciato di voler correre, assolto in inchiesta Mensa dei poveri"},
+    {"id":"de_chirico","nome":"Alessandro De Chirico","coalizione":"Centrodestra","ruolo_attuale":"Consigliere comunale, ex capogruppo FI","status":"ipotesi","note":""},
+    {"id":"gallera","nome":"Giulio Gallera","coalizione":"Centrodestra","ruolo_attuale":"Ex assessore regionale Welfare","status":"ipotesi","note":""},
+    {"id":"moratti","nome":"Letizia Moratti","coalizione":"Centrodestra","ruolo_attuale":"Ex sindaca Milano, ex vicepresidente Regione","status":"ipotesi_debole","note":"Defilata, ma possibile ruolo nella scelta finale"},
+    {"id":"terzi","nome":"Giovanni Terzi","coalizione":"Centrodestra","ruolo_attuale":"Giornalista, scrittore, ex assessore giunta Moratti","status":"ipotesi","note":"Valutato area moderata e leghista"},
+    {"id":"bertolaso","nome":"Guido Bertolaso","coalizione":"Centrodestra","ruolo_attuale":"Assessore regionale Welfare","status":"ipotesi_debole","note":"Nessun passo concreto verso candidatura"},
+    {"id":"del_debbio","nome":"Paolo Del Debbio","coalizione":"Centrodestra","ruolo_attuale":"Giornalista e conduttore","status":"ipotesi_debole","note":"Associato a progetto Vannacci, avrebbe smentito privatamente"},
+    {"id":"bastoni","nome":"Massimiliano Bastoni","coalizione":"Centrodestra","ruolo_attuale":"Ex consigliere regionale Lega","status":"ipotesi","note":"Possibile candidato sostenuto da Vannacci"},
+
+    {"id":"resta","nome":"Ferruccio Resta","coalizione":"Centrodestra","ruolo_attuale":"Ex rettore Politecnico Milano","status":"ritirato","note":"Ha sostenuto pubblicamente Civita"},
+    {"id":"iannantuoni","nome":"Giovanna Iannantuoni","coalizione":"Centrodestra","ruolo_attuale":"Ex rettrice Università Bicocca","status":"ritirato","note":"Ha declinato le sollecitazioni"},
+
+    {"id":"lisa","nome":"Massimiliano Lisa","coalizione":"Outsider","ruolo_attuale":"Imprenditore, fondatore Milano Libera","status":"dichiarato","note":"Formalmente in campo, vicesindaca indicata Tiziana Siciliano"},
+    {"id":"champagne","nome":"Filippo Champagne","coalizione":"Outsider","ruolo_attuale":"Personaggio social e radiofonico","status":"dichiarato","note":"Fratello segretario lombardo Lega Romeo, focus sicurezza/movida/vita notturna, stile goliardico"}
+  ]
+}

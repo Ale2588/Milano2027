@@ -1,4 +1,80 @@
 {
-  "ultimo_aggiornamento": "2026-06-30T09:42:29.017599",
-  "dichiarazioni": []
+  "ultimo_aggiornamento": "2026-06-30T09:53:28.887902",
+  "dichiarazioni": [
+    {
+      "id": "dich_goisis_1782813028_0",
+      "candidato_id": "goisis",
+      "testo_originale": "Voglio candidarmi alle primarie del centrosinistra per il sindaco di Milano",
+      "data": "2026-06-23",
+      "fonte": "Affaritaliani / MSN",
+      "fonte_url": "https://www.msn.com/it-it/notizie/politica/a-milano-tommasso-goisis-si-candida-alle-primarie-del-centrosinistra/ar-AA26h15P",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-06-30T09:50:28.695509"
+    },
+    {
+      "id": "dich_goisis_1782813028_1",
+      "candidato_id": "goisis",
+      "testo_originale": "Vogliamo che Milano affronti con coraggio le disuguaglianze sociali e abitative, usando tutto il potere delle istituzioni per garantire qualità della vita, diritti",
+      "data": "2026-06-23",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/cronaca/grandi-manovre-nel-centrosinistra-goisis-c002d511",
+      "tema_primario": "abitazioni",
+      "tema_secondario": "comunita",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-06-30T09:50:28.715275"
+    },
+    {
+      "id": "dich_goisis_1782813028_2",
+      "candidato_id": "goisis",
+      "testo_originale": "I privati non dettino più le regole",
+      "data": "2026-06-23",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/cronaca/grandi-manovre-nel-centrosinistra-goisis-c002d511",
+      "tema_primario": "istituzioni",
+      "tema_secondario": "economia",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-06-30T09:50:28.720395"
+    },
+    {
+      "id": "dich_pacini_1782813044_0",
+      "candidato_id": "pacini",
+      "testo_originale": "Mi candido a sindaco di Milano. Perché questa città ha bisogno di una rivoluzione",
+      "data": "2026-06-30",
+      "fonte": "Il Foglio",
+      "fonte_url": "https://www.ilfoglio.it/politica/2026/06/30/news/il-giovane-dem-lorenzo-pacini-si-candida-a-sindaco-di-milano-modello-mamdani--401391",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-06-30T09:50:44.529578"
+    },
+    {
+      "id": "dich_pacini_1782813044_1",
+      "candidato_id": "pacini",
+      "testo_originale": "Negli ultimi anni troppe decisioni che hanno cambiato il volto della città sono...",
+      "data": "2026-06-30",
+      "fonte": "Agenzia Nova",
+      "fonte_url": "https://www.agenzianova.com/a/6a4386a8041e94.22827949/7558143/2026-06-30/milano-lorenzo-pacini-nuovo-candidato-a-primarie-centrosinistra",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-06-30T09:50:44.540363"
+    }
+  ]
 }

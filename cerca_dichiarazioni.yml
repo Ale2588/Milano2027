@@ -1,0 +1,40 @@
+name: Cerca Nuove Dichiarazioni Milano 2027
+
+on:
+  schedule:
+    # Lunedì, mercoledì, venerdì alle 7:00 UTC
+    - cron: '0 7 * * 1,3,5'
+  workflow_dispatch:  # trigger manuale da Actions tab
+
+jobs:
+  search-dichiarazioni:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install datapizza-ai \
+                      datapizza-ai-clients-anthropic \
+                      datapizza-ai-tools-duckduckgo \
+                      requests
+
+      - name: Run search and classification
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/update_dichiarazioni.py
+
+      - name: Commit pending_dichiarazioni.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🔍 Nuove dichiarazioni in coda di revisione [$(date +'%Y-%m-%d')]"
+          file_pattern: pending_dichiarazioni.json

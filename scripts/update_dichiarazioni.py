@@ -142,7 +142,7 @@ def main():
 
         query = f"{nome} Milano sindaco 2027 dichiarazione"
         try:
-            results = search_tool.run(query)
+            results = search_tool.search(query=query)
         except Exception as e:
             print(f"   ⚠️  search error: {e}")
             continue

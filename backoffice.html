@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Backoffice — Milano 2027</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0c12;--ink2:#11141e;--ink3:#181c2a;--wire:#1f2538;--wire2:#2a3050;
+  --muted:#5c6480;--body:#8d96b0;--text:#cdd5e8;--bright:#eef2ff;
+  --signal:#4f8ef7;--gold:#f59e0b;--green:#10b981;--red:#ef4444;
+  --mono:'JetBrains Mono','Fira Code',monospace;--sans:'Inter',system-ui,sans-serif;
+}
+html,body{background:var(--ink);color:var(--text);font-family:var(--sans);font-size:14px;min-height:100vh}
+.wrap{max-width:780px;margin:0 auto;padding:30px 20px 80px}
+
+h1{font-family:var(--mono);font-size:14px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.subtitle{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:24px}
+
+/* Gate */
+#gate{max-width:380px;margin:80px auto;text-align:center}
+#gate input{width:100%;background:var(--ink2);border:1px solid var(--wire);border-radius:8px;color:var(--text);padding:12px 14px;font-family:var(--mono);font-size:13px;margin-bottom:10px;outline:none}
+#gate input:focus{border-color:var(--signal)}
+#gate button, .btn{background:var(--signal);color:white;border:none;border-radius:8px;padding:10px 18px;font-family:var(--mono);font-size:12px;cursor:pointer;font-weight:600}
+#gate button:hover{opacity:.9}
+#gate .hint{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.6}
+
+/* Setup token */
+#token-setup{background:var(--ink2);border:1px solid var(--wire);border-radius:10px;padding:18px;margin-bottom:24px}
+#token-setup.hidden{display:none}
+#token-setup .label{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}
+#token-setup input{width:100%;background:var(--ink3);border:1px solid var(--wire);border-radius:6px;color:var(--text);padding:9px 12px;font-family:var(--mono);font-size:12px;margin-bottom:10px;outline:none}
+#token-setup .row{display:flex;gap:8px}
+#token-setup p{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+#token-setup a{color:var(--signal)}
+
+/* Stats bar */
+.stats{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.stat-pill{background:var(--ink2);border:1px solid var(--wire);border-radius:20px;padding:6px 14px;font-family:var(--mono);font-size:11px;color:var(--body)}
+.stat-pill b{color:var(--bright)}
+
+/* Filters */
+.filters{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;align-items:center}
+.filters select{background:var(--ink3);border:1px solid var(--wire);border-radius:6px;color:var(--text);font-size:11px;padding:5px 10px;font-family:var(--mono)}
+
+/* Cards */
+.card{background:var(--ink2);border:1px solid var(--wire);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:10px}
+.cand-name{font-weight:700;font-size:14px;color:var(--bright)}
+.cand-coal{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.card-date{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap}
+
+.quote{font-size:13px;line-height:1.6;color:var(--text);font-style:italic;border-left:2px solid var(--wire2);padding-left:12px;margin:10px 0}
+
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border-radius:4px;text-transform:uppercase}
+.tag-tema{background:#4f8ef715;border:1px solid #4f8ef730;color:var(--signal)}
+.tag-tipo{background:#8d96b015;border:1px solid #8d96b030;color:var(--body)}
+.tag-menzione{background:#f59e0b15;border:1px solid #f59e0b30;color:var(--gold)}
+
+.source-row{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:12px}
+.source-row a{color:var(--signal);text-decoration:none}
+
+.actions{display:flex;gap:8px}
+.btn-approve{background:var(--green);color:white;border:none;border-radius:6px;padding:8px 16px;font-family:var(--mono);font-size:11px;cursor:pointer;flex:1}
+.btn-reject{background:transparent;color:var(--red);border:1px solid var(--red);border-radius:6px;padding:8px 16px;font-family:var(--mono);font-size:11px;cursor:pointer;flex:1}
+.btn-edit{background:transparent;color:var(--muted);border:1px solid var(--wire);border-radius:6px;padding:8px 12px;font-family:var(--mono);font-size:11px;cursor:pointer}
+.btn-approve:hover{opacity:.85}
+.btn-reject:hover{background:#ef444415}
+.btn-edit:hover{border-color:var(--signal);color:var(--signal)}
+
+.empty{text-align:center;padding:60px 20px;color:var(--muted);font-family:var(--mono);font-size:12px}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink3);border:1px solid var(--wire2);border-radius:8px;padding:10px 18px;font-family:var(--mono);font-size:12px;display:none;z-index:100}
+.toast.success{border-color:var(--green);color:var(--green)}
+.toast.error{border-color:var(--red);color:var(--red)}
+
+textarea.edit-area{width:100%;background:var(--ink3);border:1px solid var(--wire);border-radius:6px;color:var(--text);padding:10px;font-family:var(--sans);font-size:13px;margin:10px 0;min-height:70px;resize:vertical}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <h1 style="margin-bottom:6px">🔒 Backoffice</h1>
+  <div class="subtitle" style="margin-bottom:20px">Milano 2027 — revisione dichiarazioni</div>
+  <input type="password" id="pwd-input" placeholder="Password"/>
+  <button onclick="checkPassword()" style="width:100%">Entra</button>
+  <div class="hint">Accesso riservato. Pagina non indicizzata, ma non considerarla un sistema di sicurezza forte.</div>
+</div>
+
+<div class="wrap" id="main" style="display:none">
+  <h1>Backoffice Revisione</h1>
+  <div class="subtitle">Approva o scarta le dichiarazioni trovate automaticamente</div>
+
+  <div id="token-setup">
+    <div class="label">GitHub Token (necessario per salvare le modifiche)</div>
+    <p>Serve un <a href="https://github.com/settings/tokens?type=beta" target="_blank">Fine-grained Personal Access Token</a> con permesso <b>Contents: Read and write</b> solo sul repo <code>milano-2027</code>. Il token resta solo nel tuo browser (localStorage), non viene mai inviato altrove se non a api.github.com.</p>
+    <div class="row">
+      <input type="text" id="repo-owner" placeholder="username GitHub (es. ale2588)"/>
+      <input type="text" id="repo-name" placeholder="nome repo (es. milano-2027)"/>
+    </div>
+    <input type="password" id="gh-token" placeholder="ghp_... oppure github_pat_..."/>
+    <button class="btn" onclick="saveConfig()">Salva configurazione</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div class="filters">
+    <select id="filter-cand"><option value="all">Tutti i candidati</option></select>
+    <select id="filter-tema">
+      <option value="all">Tutti i temi</option>
+      <option value="mobilita">Mobilità</option>
+      <option value="verde">Verde</option>
+      <option value="abitazioni">Abitazioni</option>
+      <option value="cultura">Cultura</option>
+      <option value="economia">Economia</option>
+      <option value="comunita">Comunità</option>
+      <option value="clima">Clima</option>
+      <option value="istituzioni">Istituzioni</option>
+    </select>
+  </div>
+
+  <div id="cards-container"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PASSWORD = "Laure@.2013!"; // cambia questa password prima di pubblicare
+const TEMI_LABEL = {mobilita:'Mobilità',verde:'Verde',abitazioni:'Abitazioni',cultura:'Cultura',economia:'Economia',comunita:'Comunità',clima:'Clima',istituzioni:'Istituzioni'};
+
+let PENDING=null, CAND=null, config=null;
+
+function checkPassword(){
+  const v = document.getElementById('pwd-input').value;
+  if(v === PASSWORD){
+    document.getElementById('gate').style.display='none';
+    document.getElementById('main').style.display='block';
+    initBackoffice();
+  } else {
+    showToast('Password errata', 'error');
+  }
+}
+document.getElementById('pwd-input').addEventListener('keydown', e=>{ if(e.key==='Enter') checkPassword(); });
+
+function loadConfig(){
+  const saved = localStorage.getItem('m27_config');
+  if(saved){
+    config = JSON.parse(saved);
+    document.getElementById('repo-owner').value = config.owner||'';
+    document.getElementById('repo-name').value = config.repo||'';
+    document.getElementById('gh-token').value = config.token||'';
+    if(config.owner && config.repo && config.token){
+      document.getElementById('token-setup').classList.add('hidden');
+    }
+  }
+}
+
+function saveConfig(){
+  config = {
+    owner: document.getElementById('repo-owner').value.trim(),
+    repo: document.getElementById('repo-name').value.trim(),
+    token: document.getElementById('gh-token').value.trim(),
+  };
+  if(!config.owner || !config.repo || !config.token){
+    showToast('Compila tutti i campi', 'error'); return;
+  }
+  localStorage.setItem('m27_config', JSON.stringify(config));
+  document.getElementById('token-setup').classList.add('hidden');
+  showToast('Configurazione salvata', 'success');
+}
+
+async function initBackoffice(){
+  loadConfig();
+  try{
+    const [r1,r2] = await Promise.all([
+      fetch('pending_dichiarazioni.json?t='+Date.now()),
+      fetch('candidati.json?t='+Date.now())
+    ]);
+    PENDING = r1.ok ? await r1.json() : {dichiarazioni:[]};
+    CAND = (await r2.json()).candidati;
+  }catch(e){
+    PENDING = {dichiarazioni:[]}; CAND=[];
+  }
+
+  const sel = document.getElementById('filter-cand');
+  const ids = [...new Set(PENDING.dichiarazioni.map(d=>d.candidato_id))];
+  ids.forEach(id=>{
+    const c = CAND.find(x=>x.id===id);
+    const o = document.createElement('option');
+    o.value=id; o.textContent = c?c.nome:id;
+    sel.appendChild(o);
+  });
+  sel.addEventListener('change', render);
+  document.getElementById('filter-tema').addEventListener('change', render);
+
+  render();
+}
+
+function render(){
+  const filterCand = document.getElementById('filter-cand').value;
+  const filterTema = document.getElementById('filter-tema').value;
+
+  let items = PENDING.dichiarazioni.filter(d=>d.status_revisione==='pending'||!d.status_revisione);
+  const total = items.length;
+  if(filterCand!=='all') items = items.filter(d=>d.candidato_id===filterCand);
+  if(filterTema!=='all') items = items.filter(d=>d.tema_primario===filterTema);
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-pill"><b>${total}</b> in coda</div>
+    <div class="stat-pill"><b>${items.length}</b> mostrate</div>
+  `;
+
+  const container = document.getElementById('cards-container');
+  if(items.length===0){
+    container.innerHTML = `<div class="empty">✅ Nessuna dichiarazione da revisionare con questi filtri</div>`;
+    return;
+  }
+
+  container.innerHTML = items.map(d=>{
+    const c = CAND.find(x=>x.id===d.candidato_id);
+    const menzioniLabel = (d.menziona||[]).map(mid=>{
+      const m = CAND.find(x=>x.id===mid);
+      return m ? m.nome : mid;
+    });
+    return `
+    <div class="card" data-id="${d.id}">
+      <div class="card-head">
+        <div>
+          <div class="cand-name">${c?c.nome:d.candidato_id}</div>
+          <div class="cand-coal">${c?c.coalizione:''}</div>
+        </div>
+        <div class="card-date">${d.data||''}</div>
+      </div>
+      <div class="quote" id="quote-${d.id}">"${d.testo_originale}"</div>
+      <div class="tags">
+        ${d.tema_primario?`<span class="tag tag-tema">${TEMI_LABEL[d.tema_primario]||d.tema_primario}</span>`:''}
+        ${d.tema_secondario?`<span class="tag tag-tema">${TEMI_LABEL[d.tema_secondario]||d.tema_secondario}</span>`:''}
+        ${d.tipo_affermazione?`<span class="tag tag-tipo">${d.tipo_affermazione.replace('_',' ')}</span>`:''}
+        ${menzioniLabel.map(m=>`<span class="tag tag-menzione">→ ${m} (${d.tono_menzione||''})</span>`).join('')}
+      </div>
+      <div class="source-row">${d.fonte||'fonte sconosciuta'} ${d.fonte_url?`· <a href="${d.fonte_url}" target="_blank">↗ apri fonte</a>`:''}</div>
+      <div class="actions">
+        <button class="btn-approve" onclick="approveDecl('${d.id}')">✓ Approva</button>
+        <button class="btn-reject" onclick="rejectDecl('${d.id}')">✕ Scarta</button>
+        <button class="btn-edit" onclick="editDecl('${d.id}')">✎</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function editDecl(id){
+  const quoteEl = document.getElementById('quote-'+id);
+  const current = quoteEl.textContent.replace(/^"|"$/g,'');
+  quoteEl.innerHTML = `<textarea class="edit-area" id="textarea-${id}">${current}</textarea>
+    <button class="btn-edit" onclick="saveEdit('${id}')">Salva modifica testo</button>`;
+}
+function saveEdit(id){
+  const newText = document.getElementById('textarea-'+id).value;
+  const item = PENDING.dichiarazioni.find(d=>d.id===id);
+  if(item) item.testo_originale = newText;
+  render();
+}
+
+function checkConfig(){
+  if(!config || !config.owner || !config.repo || !config.token){
+    showToast('Configura prima il GitHub token (sezione in alto)', 'error');
+    document.getElementById('token-setup').classList.remove('hidden');
+    return false;
+  }
+  return true;
+}
+
+// ── GitHub API helpers ──────────────────────────────────────────
+async function ghGetFile(path){
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const r = await fetch(url, {headers:{Authorization:`Bearer ${config.token}`}});
+  if(!r.ok) throw new Error(`GET ${path} failed: ${r.status}`);
+  const data = await r.json();
+  const content = decodeURIComponent(escape(atob(data.content)));
+  return {json: JSON.parse(content), sha: data.sha};
+}
+
+async function ghPutFile(path, jsonObj, sha, message){
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(jsonObj, null, 2))));
+  const body = {message, content, sha};
+  const r = await fetch(url, {
+    method:'PUT',
+    headers:{Authorization:`Bearer ${config.token}`, 'Content-Type':'application/json'},
+    body: JSON.stringify(body)
+  });
+  if(!r.ok){
+    const err = await r.text();
+    throw new Error(`PUT ${path} failed: ${r.status} ${err}`);
+  }
+  return r.json();
+}
+
+// ── Approve / Reject ────────────────────────────────────────────
+async function approveDecl(id){
+  if(!checkConfig()) return;
+  const item = PENDING.dichiarazioni.find(d=>d.id===id);
+  if(!item) return;
+  showToast('Salvataggio in corso...', '');
+
+  try{
+    // 1. Aggiungi a dichiarazioni.json pubblico
+    const {json: pubData, sha: pubSha} = await ghGetFile('dichiarazioni.json');
+    const cleanItem = {...item};
+    delete cleanItem.status_revisione;
+    delete cleanItem.trovata_il;
+    pubData.dichiarazioni.push(cleanItem);
+    pubData.ultimo_aggiornamento = new Date().toISOString();
+    await ghPutFile('dichiarazioni.json', pubData, pubSha, `✓ Approvata dichiarazione ${id}`);
+
+    // 2. Rimuovi da pending_dichiarazioni.json
+    const {json: pendData, sha: pendSha} = await ghGetFile('pending_dichiarazioni.json');
+    pendData.dichiarazioni = pendData.dichiarazioni.filter(d=>d.id!==id);
+    await ghPutFile('pending_dichiarazioni.json', pendData, pendSha, `Rimossa dalla coda (approvata): ${id}`);
+
+    // Aggiorna stato locale
+    PENDING.dichiarazioni = PENDING.dichiarazioni.filter(d=>d.id!==id);
+    render();
+    showToast('✓ Approvata e pubblicata', 'success');
+  }catch(e){
+    showToast('Errore: '+e.message, 'error');
+    console.error(e);
+  }
+}
+
+async function rejectDecl(id){
+  if(!checkConfig()) return;
+  showToast('Salvataggio in corso...', '');
+
+  try{
+    const {json: pendData, sha: pendSha} = await ghGetFile('pending_dichiarazioni.json');
+    const item = pendData.dichiarazioni.find(d=>d.id===id);
+    pendData.dichiarazioni = pendData.dichiarazioni.filter(d=>d.id!==id);
+    await ghPutFile('pending_dichiarazioni.json', pendData, pendSha, `Scartata dalla coda: ${id}`);
+
+    // Archivia negli scarti (best-effort, non blocca se fallisce)
+    try{
+      const {json: scartiData, sha: scartiSha} = await ghGetFile('scarti_dichiarazioni.json');
+      scartiData.dichiarazioni.push({...item, scartata_il: new Date().toISOString()});
+      await ghPutFile('scarti_dichiarazioni.json', scartiData, scartiSha, `Archiviato scarto: ${id}`);
+    }catch(e){ console.warn('Archivio scarti non aggiornato:', e); }
+
+    PENDING.dichiarazioni = PENDING.dichiarazioni.filter(d=>d.id!==id);
+    render();
+    showToast('✕ Scartata', 'success');
+  }catch(e){
+    showToast('Errore: '+e.message, 'error');
+    console.error(e);
+  }
+}
+
+function showToast(msg, type){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast'+(type?' '+type:'');
+  t.style.display='block';
+  if(type) setTimeout(()=>{ t.style.display='none'; }, 3000);
+}
+</script>
+</body>
+</html>

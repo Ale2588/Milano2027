@@ -1,5 +1,5 @@
 {
-  "ultimo_aggiornamento": "2026-06-30T09:53:28.887902",
+  "ultimo_aggiornamento": "2026-07-01T10:44:36.405652",
   "dichiarazioni": [
     {
       "id": "dich_goisis_1782813028_0",
@@ -75,6 +75,111 @@
       "tono_menzione": null,
       "status_revisione": "pending",
       "trovata_il": "2026-06-30T09:50:44.540363"
+    },
+    {
+      "id": "dich_scavuzzo_1782902282_0",
+      "candidato_id": "scavuzzo",
+      "testo_originale": "Magari saremo ancora noi. Nella prospettiva di continuità, mi piace pensare che inaugureremo noi il nuovo stadio",
+      "data": "2025-12-21",
+      "fonte": "Calcio e Finanza",
+      "fonte_url": "https://www.calcioefinanza.it/2025/12/21/nuovo-sindaco-milano-2027/",
+      "tema_primario": "cultura",
+      "tema_secondario": "economia",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-01T10:38:02.224177"
+    },
+    {
+      "id": "dich_conte_emmanuel_1782902301_0",
+      "candidato_id": "conte_emmanuel",
+      "testo_originale": "Candidarsi a sindaco della propria città, in particolare di Milano, è sicuramente un privilegio e un'aspirazione. Naturalmente lo è anche per me",
+      "data": "2026-06-26",
+      "fonte": "Corriere della Sera",
+      "fonte_url": "https://milano.corriere.it/notizie/cronaca/26_giugno_26/comunali-emmanuel-conte-io-ci-sono-ora-le-primarie-nei-prossimi-cinque-anni-una-nuova-visione-di-citta-52aa80dd-43f0-4d60-b65f-cf9b200e9xlk.shtml",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-01T10:38:21.299221"
+    },
+    {
+      "id": "dich_conte_emmanuel_1782902301_1",
+      "candidato_id": "conte_emmanuel",
+      "testo_originale": "Credo però che adesso la priorità non sia la candidatura a sindaco ma un nuovo progetto di città",
+      "data": "2026-06-26",
+      "fonte": "Corriere della Sera",
+      "fonte_url": "https://milano.corriere.it/notizie/cronaca/26_giugno_26/comunali-emmanuel-conte-io-ci-sono-ora-le-primarie-nei-prossimi-cinque-anni-una-nuova-visione-di-citta-52aa80dd-43f0-4d60-b65f-cf9b200e9xlk.shtml",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-01T10:38:21.312529"
+    },
+    {
+      "id": "dich_conte_emmanuel_1782902301_2",
+      "candidato_id": "conte_emmanuel",
+      "testo_originale": "Il primo punto è l'abitare, in senso largo: casa, trasporto pubblico, servizi",
+      "data": "2026-06-26",
+      "fonte": "Corriere della Sera",
+      "fonte_url": "https://milano.corriere.it/notizie/cronaca/26_giugno_26/comunali-emmanuel-conte-io-ci-sono-ora-le-primarie-nei-prossimi-cinque-anni-una-nuova-visione-di-citta-52aa80dd-43f0-4d60-b65f-cf9b200e9xlk.shtml",
+      "tema_primario": "abitazioni",
+      "tema_secondario": "mobilita",
+      "tipo_affermazione": "proposta_concreta",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-01T10:38:21.323650"
+    },
+    {
+      "id": "dich_goisis_1782902324_0",
+      "candidato_id": "goisis",
+      "testo_originale": "Vogliamo orientare la politica milanese partendo da chi abita la città",
+      "data": "2026-06-23",
+      "fonte": "MilanoToday",
+      "fonte_url": "https://www.milanotoday.it/politica/tommaso-goisis-candidato-centrosinistra.html",
+      "tema_primario": "comunita",
+      "tema_secondario": "istituzioni",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-01T10:38:44.888298"
+    },
+    {
+      "id": "dich_goisis_1782902324_1",
+      "candidato_id": "goisis",
+      "testo_originale": "Mi candido alle primarie del centrosinistra milanese",
+      "data": "2026-06-22",
+      "fonte": "Il Manifesto",
+      "fonte_url": "https://ilmanifesto.it/milano-il-primo-sfidante-alle-primarie-del-centrosinistra-e-il-civico-goisis",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-01T10:38:44.896020"
+    },
+    {
+      "id": "dich_pacini_1782902343_0",
+      "candidato_id": "pacini",
+      "testo_originale": "Quei pochissimi che hanno tutto devono pagare un po' di più, affinché tutti gli altri abbiano servizi migliori. Per questo mi candido alle primarie: perché c'è bisogno di sinistra. Mai più decisioni prese per i grandi interessi privati o per i fondi stranieri. È il momento di restituire il potere alle persone. Per questo vogliamo primarie aperte a tutta la sinistra della città: per scegliere insieme il prossimo candidato sindaco. A Milano serve una rivoluzione – chiosa – e la faremo insieme.",
+      "data": "2026-06-30",
+      "fonte": "Il Foglio",
+      "fonte_url": "https://www.ilfoglio.it/politica/2026/06/30/news/il-giovane-dem-lorenzo-pacini-si-candida-a-sindaco-di-milano-modello-mamdani--401391",
+      "tema_primario": "istituzioni",
+      "tema_secondario": "economia",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-01T10:39:03.082613"
     }
   ]
 }

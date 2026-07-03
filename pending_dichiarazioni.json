@@ -1,5 +1,5 @@
 {
-  "ultimo_aggiornamento": "2026-07-01T10:44:36.405652",
+  "ultimo_aggiornamento": "2026-07-03T09:53:58.568737",
   "dichiarazioni": [
     {
       "id": "dich_goisis_1782813028_0",
@@ -180,6 +180,66 @@
       "tono_menzione": null,
       "status_revisione": "pending",
       "trovata_il": "2026-07-01T10:39:03.082613"
+    },
+    {
+      "id": "dich_pacini_1783072224_0",
+      "candidato_id": "pacini",
+      "testo_originale": "Non possiamo più permetterci di delegare ad altri soggetti il futuro di Milano e credo sia finito il tempo di amministrare Milano come se fosse un'azienda: la Giunta non è un consiglio di amministrazione, il sindaco non è un amministratore ...",
+      "data": "2026-06-28",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/politica/lorenzo-pacini-candidato-primarie-centrosinistra-o7bgotqt",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-03T09:50:24.460226"
+    },
+    {
+      "id": "dich_pacini_1783072224_1",
+      "candidato_id": "pacini",
+      "testo_originale": "Quindi, se ci sono tanti candidati questo è perché c'è tanto dibattito, perché ci sono tanti programmi, tante idee. Io non penso che sia per forza negativo. Certo che, poi, bisogna fare le regole affinché chi vince le primarie abbia un sostegno sufficiente per mettere insieme la coalizione e presentarsi sindaco.",
+      "data": "2026-06-29",
+      "fonte": "Radio Popolare",
+      "fonte_url": "https://www.radiopopolare.it/milano-primarie-si-candida-lorenzo-pacini-una-citta-attrattiva-per-lavoratori-e-famiglie-non-per-i-fondi-di-investimento",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-03T09:50:24.503456"
+    },
+    {
+      "id": "dich_cottarelli_1783072283_0",
+      "candidato_id": "cottarelli",
+      "testo_originale": "Io candidato sindaco? Non me l'ha chiesto nessuno, ma se me lo chiedessero ci penserei, in questo momento però mi sembra improbabile",
+      "data": "2026-06-16",
+      "fonte": "Il Giorno",
+      "fonte_url": "https://www.ilgiorno.it/milano/politica/carlo-cottarelli-sindaco-x56s4mw7",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-03T09:51:23.379983"
+    },
+    {
+      "id": "dich_cottarelli_1783072283_1",
+      "candidato_id": "cottarelli",
+      "testo_originale": "Non è un lavoro facile. Nessuno mi ha fatto una proposta ufficiale. Ho solo detto che ci penserei. Che non vuol dire che accetterei. Mi sembra una cosa complicata",
+      "data": "2026-07-01",
+      "fonte": "ANSA / EspansioneTv",
+      "fonte_url": "https://www.espansionetv.it/2026/07/01/cottarelli-io-candidato-sindaco-di-milano-ci-penserei/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-03T09:51:23.403240"
     }
   ]
 }

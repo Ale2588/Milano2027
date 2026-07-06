@@ -1,5 +1,5 @@
 {
-  "ultimo_aggiornamento": "2026-07-03T09:53:58.568737",
+  "ultimo_aggiornamento": "2026-07-06T11:26:55.710269",
   "dichiarazioni": [
     {
       "id": "dich_goisis_1782813028_0",
@@ -240,6 +240,21 @@
       "tono_menzione": null,
       "status_revisione": "pending",
       "trovata_il": "2026-07-03T09:51:23.403240"
+    },
+    {
+      "id": "dich_lisa_1783337207_0",
+      "candidato_id": "lisa",
+      "testo_originale": "Una Milano terreno di speculazione per fondi, banche e grandi gruppi. Il cittadino oggi è una comparsa in un film dove non è protagonista.",
+      "data": "2026-07-01",
+      "fonte": "MiTomorrow",
+      "fonte_url": "https://www.mitomorrow.it/online/primo-piano/comunali-a-milano/",
+      "tema_primario": "abitazioni",
+      "tema_secondario": "economia",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-06T11:26:47.682694"
     }
   ]
 }

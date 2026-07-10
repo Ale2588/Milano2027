@@ -1,5 +1,5 @@
 {
-  "ultimo_aggiornamento": "2026-07-08T09:23:31.746721",
+  "ultimo_aggiornamento": "2026-07-10T10:17:18.706859",
   "dichiarazioni": [
     {
       "id": "dich_goisis_1782813028_0",
@@ -270,6 +270,21 @@
       "tono_menzione": null,
       "status_revisione": "pending",
       "trovata_il": "2026-07-08T09:21:51.542305"
+    },
+    {
+      "id": "dich_conte_emmanuel_1783678495_0",
+      "candidato_id": "conte_emmanuel",
+      "testo_originale": "Le ambizioni in politica non sono di per sé un male, ma diventano fragili quando precedono il progetto",
+      "data": "2026-06-28",
+      "fonte": "la Repubblica",
+      "fonte_url": "https://milano.repubblica.it/cronaca/2026/06/28/news/assessore_conte_lettera_politiche_casa_elezioni_comunali-425438108/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-10T10:14:55.593147"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "ultimo_aggiornamento": "2026-07-10T10:17:18.706859",
+  "ultimo_aggiornamento": "2026-07-13T10:20:34.649945",
   "dichiarazioni": [
     {
       "id": "dich_goisis_1782813028_0",
@@ -285,6 +285,81 @@
       "tono_menzione": null,
       "status_revisione": "pending",
       "trovata_il": "2026-07-10T10:14:55.593147"
+    },
+    {
+      "id": "dich_pacini_1783937839_0",
+      "candidato_id": "pacini",
+      "testo_originale": "La casa costa troppo, la spesa costa troppo, la vita costa troppo.",
+      "data": "2026-06-30",
+      "fonte": "MilanoToday",
+      "fonte_url": "https://www.milanotoday.it/politica/lorenzo-pacini-candidato-primarie.html",
+      "tema_primario": "abitazioni",
+      "tema_secondario": "economia",
+      "tipo_affermazione": "critica",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-13T10:17:19.354015"
+    },
+    {
+      "id": "dich_pacini_1783937839_1",
+      "candidato_id": "pacini",
+      "testo_originale": "Quei pochissimi che hanno tutto devono pagare un po' di più, affinché tutti gli altri abbiano servizi migliori",
+      "data": "2026-06-30",
+      "fonte": "Il Foglio",
+      "fonte_url": "https://www.ilfoglio.it/politica/2026/06/30/news/il-giovane-dem-lorenzo-pacini-si-candida-a-sindaco-di-milano-modello-mamdani--401391",
+      "tema_primario": "economia",
+      "tema_secondario": "comunita",
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-13T10:17:19.373032"
+    },
+    {
+      "id": "dich_pacini_1783937839_2",
+      "candidato_id": "pacini",
+      "testo_originale": "per troppo tempo i problemi di questa città sono stati nascosti sotto il tappeto patinato del mito dell'attrattività",
+      "data": "2026-06-30",
+      "fonte": "Radio Lombardia",
+      "fonte_url": "https://www.radiolombardia.it/2026/06/30/rivoluzione-milano-lorenzo-pacini-si-candida-alle-primarie-del-centrosinistra/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-13T10:17:19.440118"
+    },
+    {
+      "id": "dich_pacini_1783937839_3",
+      "candidato_id": "pacini",
+      "testo_originale": "finito il tempo di amministrare Milano come se fosse un'azienda: la Giunta non è un consiglio di amministrazione, il Sindaco non è un amministratore delegato",
+      "data": "2026-06-30",
+      "fonte": "Radio Lombardia",
+      "fonte_url": "https://www.radiolombardia.it/2026/06/30/rivoluzione-milano-lorenzo-pacini-si-candida-alle-primarie-del-centrosinistra/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "critica",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-13T10:17:19.465647"
+    },
+    {
+      "id": "dich_pacini_1783937839_4",
+      "candidato_id": "pacini",
+      "testo_originale": "Il compito della politica è assumersi la responsabilità di scegliere da che parte stare.",
+      "data": "2026-06-30",
+      "fonte": "Radio Lombardia",
+      "fonte_url": "https://www.radiolombardia.it/2026/06/30/rivoluzione-milano-lorenzo-pacini-si-candida-alle-primarie-del-centrosinistra/",
+      "tema_primario": "istituzioni",
+      "tema_secondario": null,
+      "tipo_affermazione": "posizione_principio",
+      "menziona": [],
+      "tono_menzione": null,
+      "status_revisione": "pending",
+      "trovata_il": "2026-07-13T10:17:19.480651"
     }
   ]
 }
